@@ -1,53 +1,47 @@
-import React,{Component} from 'react'
+import React, { Component } from 'react'
+import {INCREMENT, DECREMENT} from '../redux/action_type'
 export default class App extends Component{
-    state= {
-        count:0
-    }
     increment = ()=>{
         //1、得到选择的增加数量值
             const number = this.select.value*1
-        //2、得到原来的count状态，并计算新的count
-            const count = this.state.count
-        //3、更新状态
-          this.setState({count:count+number})
+        //2、调用store的方法更新状态
+        this.props.store.dispatch({type:INCREMENT,data:number})
       }
       decrement = ()=>{
         //1、得到选择的增加数量值
             const number = this.select.value*1
-        //2、得到原来的count状态，并计算新的count
-            const count = this.state.count
-        //3、更新状态
-              this.setState({count:count-number})
+        //2、调用store的方法更新状态
+        this.props.store.dispatch({type:DECREMENT,data:number})
 
       }
       incrementIfOdd = ()=>{
         //1、得到选择的增加数量值
             const number = this.select.value*1
         //2、得到原来的count状态，并计算新的count
-            const count = this.state.count
+            const count = this.props.store.getState()
         //3、更新状态
           if(count%2===1){
-              this.setState({count:count+number})
+            //2、调用store的方法更新状态
+            this.props.store.dispatch({type:INCREMENT,data:number})
            }
       }
       incrementAsync = ()=>{
         //1、得到选择的增加数量值
             const number = this.select.value*1
-        //2、得到原来的count状态，并计算新的count
-            const count = this.state.count
-        //3、启动延时定时器
+        //2、启动延时定时器
           setTimeout(()=>{
-            //更新状态
-            this.setState({count:count+number})
+        //3、调用store的方法更新状态
+        this.props.store.dispatch({type:INCREMENT,data:number})
           },1000)
       }
 
 
     render() {
-        const { count} = this.state
+        const  count  = this.props.store.getState()
+        //debugger
     return (
       <div>
-            <p>click { count} items</p>
+            <p>click {count} items</p>
         <div>
                 <select ref={select => this.select = select}>
               <option value="1">1</option>

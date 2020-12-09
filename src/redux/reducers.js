@@ -3,11 +3,11 @@
 import { INCREMENT, DECREMENT } from './action_type'
 
 export function counter(state = 0, action) {
-    console.log('counter()', state, action)
+    // console.log('counter()', state, action)
     switch (action.type) {
-        case 'INCREMENT':
+        case INCREMENT:
             return state + action.data
-        case 'DECREMENT':
+        case DECREMENT:
             return state - action.data
         default:
             return state
