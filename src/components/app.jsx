@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
-import {INCREMENT, DECREMENT} from '../redux/action_type'
+import * as actions from '../redux/actions'
 export default class App extends Component{
     increment = ()=>{
         //1、得到选择的增加数量值
             const number = this.select.value*1
         //2、调用store的方法更新状态
-        this.props.store.dispatch({type:INCREMENT,data:number})
+        this.props.store.dispatch(actions.increment(number))
       }
       decrement = ()=>{
         //1、得到选择的增加数量值
             const number = this.select.value*1
         //2、调用store的方法更新状态
-        this.props.store.dispatch({type:DECREMENT,data:number})
+        this.props.store.dispatch(actions.decrement(number))
 
       }
       incrementIfOdd = ()=>{
@@ -22,7 +22,7 @@ export default class App extends Component{
         //3、更新状态
           if(count%2===1){
             //2、调用store的方法更新状态
-            this.props.store.dispatch({type:INCREMENT,data:number})
+            this.props.store.dispatch(actions.increment(number))
            }
       }
       incrementAsync = ()=>{
@@ -31,7 +31,7 @@ export default class App extends Component{
         //2、启动延时定时器
           setTimeout(()=>{
         //3、调用store的方法更新状态
-        this.props.store.dispatch({type:INCREMENT,data:number})
+        this.props.store.dispatch(actions.increment(number))
           },1000)
       }
 
