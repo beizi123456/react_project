@@ -5,7 +5,8 @@ import PropTypes from 'prop-types'
     static propTypes = {
         count: PropTypes.number.isRequired,
         increment: PropTypes.func.isRequired,
-        decrement:PropTypes.func.isRequired
+        decrement: PropTypes.func.isRequired,
+        incrementAsync:PropTypes.func.isRequired
 
     }
     increment = ()=>{
@@ -34,12 +35,8 @@ import PropTypes from 'prop-types'
       }
       incrementAsync = ()=>{
         //1、得到选择的增加数量值
-            const number = this.select.value*1
-        //2、启动延时定时器
-          setTimeout(()=>{
-        //3、调用store的方法更新状态
-        this.props.increment(number)
-          },1000)
+          const number = this.select.value * 1
+          this.props.incrementAsync(number)
       }
 
 
