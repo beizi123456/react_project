@@ -4,6 +4,11 @@ import RenderDOM from 'react-dom'
 
 import App from './components/app'
 import store from './redux/store'
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 79c46f8aa116d7ec1f2ad530fb1fdefb7b3d6475
 function render() {
     RenderDOM.render(<App store={store} />, document.getElementById('root'))
 }
