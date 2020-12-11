@@ -1,21 +1,13 @@
-import { INCREMENT, DECREMENT } from '../redux/action_type'
+/*包含了所有action creator(action的工厂函数)*/
+import { ADD_COMMENT, DELETE_COMMENT } from './action-types'
 
-export const increment = (number) => ({
-    type: INCREMENT,
-    data: number
+//同步添加
+export const addComment = (comment) => ({
+    type: ADD_COMMENT,
+    data: comment
 })
-export const decrement = (number) => ({
-    type: DECREMENT,
-    data: number
+//同步删除
+export const deleteComment = (index) => ({
+    type: DELETE_COMMENT,
+    data: index
 })
-export const incrementAsync = (number) => {
-    return dispatch => (
-        setTimeout(() => {
-            dispatch(increment(number))
-        }, 1000)
-    )
-
-
-
-
-}
