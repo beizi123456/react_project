@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { addComment,deleteComment} from '../../redux/actions'
+import { addComment,deleteComment,getComment} from '../../redux/actions'
 import CommentAdd from '../../components/comment-add/comment_add'
 import CommentList from '../../components/comment-list/comment_list'
 
@@ -12,9 +12,13 @@ import CommentList from '../../components/comment-list/comment_list'
     static propTypes = {
         comments: PropTypes.array.isRequired,
         addComment: PropTypes.func.isRequired,
-        deleteComment:PropTypes.func.isRequired
+        deleteComment: PropTypes.func.isRequired,
+        getComment:PropTypes.func.isRequired
     }
-
+     componentDidMount() {
+         //异步获取所有评论数组
+         this.props.getComment()
+     }
 
     render() {
         const {comments,addComment,deleteComment} = this.props
@@ -44,6 +48,6 @@ import CommentList from '../../components/comment-list/comment_list'
 }
 export default connect(
     state => ({ comments:state }),
-    {addComment,deleteComment}
+    {addComment,deleteComment,getComment}
 
 )(App)
